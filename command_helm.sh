@@ -42,6 +42,7 @@ helm upgrade mywebapp-release webapp1/ \
 
 # Delete installation
 helm delete mywebapp-release
+helm uninstall mywebapp-release
 
 # List out helm release versions
 helm ls
