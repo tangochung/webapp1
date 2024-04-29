@@ -1,0 +1,13 @@
+app:
+  name: mywebapp
+  image:
+    name: devopsjourney1/mywebapp
+    tag: latest
+
+service:
+  name: mywebapp
+
+
+
+
+

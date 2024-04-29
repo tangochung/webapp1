@@ -1,0 +1,8 @@
+namespaces: dev
+
+configmap:
+  name: configmapv1.0
+  data: 
+    BG_COLOR: '#12181b'
+    FONT_COLOR: '#FFFFFF'
+    CUSTOM_HEADER: 'DEV. This is Hung Customized with a configmap!'

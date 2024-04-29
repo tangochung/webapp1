@@ -1,0 +1,2 @@
+servicename=$(kubectl get svc -l "app=mywebapp" -o jsonpath="{.items[0].metadata.name}" )
+kubectl port-forward  service/mywebapp 8082:80 --namespace=default

@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeployment
+  namespace: {{ .Values.namespaces }}
+  labels:
+    app: {{ .Values.app.name }}
+spec:
+  replicas: 5
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: {{ .Values.app.name }}
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app.name }}
+        tier: frontend
+    spec: # Pod spec
+      containers:
+      - name: mycontainer
+        image: {{ .Values.app.image.name }}:{{ .Values.app.image.tag }}
+        ports:
+        - containerPort: 80
+        envFrom:
+        - configMapRef:
+            name: {{ .Values.configmap.name }}
+        resources:
+          requests:
+            memory: "16Mi" 
+            cpu: "50m"    # 50 milli cores (1/20 CPU)
+          limits:
+            memory: "128Mi" # 128 mebibytes 
+            cpu: "100m"
