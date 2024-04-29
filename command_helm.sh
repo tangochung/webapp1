@@ -91,11 +91,9 @@ helm repo index charts  # create index file for charts
 #     appVersion: 1.17.0
 #     .................
 
-helm repo add chart_name https://artifacthub.io/repo_dir
+helm repo add tangochunghelmchart https://tangochung.github.io/webapp1/charts
 
-helm update repo 
-
-helm install release_name repo/chart
+helm install my-webapp1 tangochunghelmchart/webapp1 --version 0.1.1
 
 ----
 servicename=$(kubectl get svc -l "app=mywebapp" -o jsonpath="{.items[0].metadata.name}" )
